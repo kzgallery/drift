@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>drift</title>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://vr-ugar.github.io/portals/portals.js"></script>
+	<script src="https://vr-ugar.github.io/portals/aim.js"></script>
+	<script src="https://vr-ugar.github.io/portals/a-portal.js"></script>
+  </head>
+  
+  <body>
+    <a-scene background="color: orange" loading-screen="dotsColor: orange; backgroundColor: black">
+      <a-assets>
+		  <img id="1" src="assets/drifting01.jpg">
+	      <img id="2" src="assets/drifting02.jpg">
+	      <img id="3" src="assets/drifting03.jpg">
+	      
+	      
+          <audio id="sound" src="assets/Atlantis.mp3" preload="auto" loop="true"></audio>
+      </a-assets>
+
+      <a-camera position="0 0 0" wasd-controls="enabled: false">
+		<a-cursor visible="true" color="red"></a-cursor>
+	  	
+	  	<!-- comment out the next line when done -->
+	  	<!-- a-entity position="0 0 -10" aim --> 
+
+      <a-sound src="#sound" autoplay="true" loop="true" positional="false" position="0 2 -1"></a-sound>
+      </a-camera>
+
+		<a-entity id="loc_1" visible="true">
+			<a-sky material="src: #1"></a-sky>
+
+			<a-portal
+				to="loc_2"
+				src="#2"
+				position="-9.89 -1.08 -0.97"
+				>
+			</a-portal>
+			
+			<a-portal
+				to="loc_3"
+				src="#3"
+				position="-8.34 5.43 -0.97"
+				>
+			</a-portal>
+
+		</a-entity>
+
+
+		<a-entity id="loc_2" visible="false">
+			<a-sky material="src: #2"></a-sky>
+
+			<a-portal
+				to="loc_1"
+				src="#1"
+				position="-9.96 -0.9 0.28"
+				>
+			</a-portal>
+
+			<a-portal
+				to="loc_3"
+				src="#3"
+				position="-5.87 8.09 -0.41"
+				>
+			</a-portal>
+
+		</a-entity>
+
+
+		<a-entity id="loc_3" visible="false">
+			<a-sky material="src: #3"></a-sky>
+
+			<a-portal
+				to="loc_1"
+				src="#1"
+				position="-0.19 -6.15 7.89"
+				>
+			</a-portal>
+			
+			<a-portal
+				to="loc_2"
+				src="#2"
+				position="0.11 -4.85 -8.75"
+				>
+			</a-portal>
+			
+		</a-entity>
+
+	
+		
+    </a-scene>
+  </body>
+</html>
